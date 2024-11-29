@@ -1,0 +1,56 @@
+{
+    "manifest_version": 3,
+    "name": "Clarif.AI",
+    "version": "1.1",
+    "description": "Enhance text input using the Claude API",
+    "permissions": [
+      "activeTab",
+      "storage",
+      "contextMenus",
+      "scripting"
+    ],
+    "host_permissions": [
+      "https://api.anthropic.com/*"
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icons/icon16.png",
+        "19": "icons/icon19.png",
+        "32": "icons/icon32.png",
+        "38": "icons/icon38.png"
+      }
+    },
+    "icons": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "content_scripts": [{
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "all_frames": true,
+      "run_at": "document_start"
+    }],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "commands": {
+      "improveWriting": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+E",
+          "mac": "Command+Shift+E"
+        },
+        "description": "Improve Text"
+      },
+      "_execute_action": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+T",
+          "mac": "Command+Shift+T"
+        },
+        "description": "Open Popup"
+      }
+    }
+  }
+  
